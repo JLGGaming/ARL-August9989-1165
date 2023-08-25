@@ -34,6 +34,7 @@ public class DriveTank extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    System.out.println("End Driving Tank");
     RobotContainer.m_driveSubsystem.DriveTank(0, 0);
   }
 

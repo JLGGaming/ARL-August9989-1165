@@ -21,14 +21,14 @@ public final class Constants {
 
   public static class MotorConstants {
     public static final int kFrontLeft = 1;
-    public static final int kFrontRight = 2;    
-    public static final int kBackLeft = 3;
+    public static final int kFrontRight = 7;    
+    public static final int kBackLeft = 2;  
     public static final int kBackRight = 4;
 
     public static final int kIntakeRight = 5;
     public static final int kIntakeLeft = 6;
 
-    public static final int kArmRight = 7;
+    public static final int kArmRight = 3;
     public static final int kArmLeft = 8;
 
     public static final int kDriveSmartCurrent = 40;
@@ -36,8 +36,8 @@ public final class Constants {
     public static final int kArmSmartCurrent = 40;
 
     public static final double kDriveRampRate = 0.25;
+    public static final double kArmRampRate = 0.25;
   }
-
 
   public static class ArmPIDConstants {
     public static final int kZeroPosition = 0;
@@ -51,20 +51,21 @@ public final class Constants {
     public static final double kI = 0;
     public static final double kD = 0;
 
+    public static final double kTolerance = 0;
+
     public static final double kSpeedMax = 0.8;
     public static final double kSpeedMin = -0.8;
 
     public static final double kVelocityMax = 0;
     public static final double kVelocityMin = 0;
-
   }
 
   public static class IntakeConstants {
-    public static final double kHighSpeed = 1.0;
-    public static final double kMidSpeed = 0.8;
-    public static final double kLowSpeed = 0.5;
+    public static final double kHighSpeed = 0.2;
+    public static final double kMidSpeed = 0.2;
+    public static final double kLowSpeed = 0.1;
 
-    public static final double kIntakeSpeed = 0.5;
+    public static final double kIntakeSpeed = 0.2;
   }
 
 }

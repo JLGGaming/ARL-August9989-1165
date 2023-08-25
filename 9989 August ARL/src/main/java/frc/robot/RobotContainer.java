@@ -32,7 +32,6 @@ public class RobotContainer {
   public final static ArmSubsystem m_armSubsystem = new ArmSubsystem();
   public final static IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
 
-
   public static final CommandXboxController m_xboxDriverController =
       new CommandXboxController(OperatorConstants.kXboxControllerPort);
 
@@ -51,12 +50,15 @@ public class RobotContainer {
   }
  
   private void configureBindings() {
-    m_xboxCoDriverController.a().whileTrue(new LoadIn());
+    m_xboxCoDriverController.rightTrigger(0.2).whileTrue(new LoadIn());
 
     m_xboxCoDriverController.povUp().onTrue(new ScoreHigh());
     m_xboxCoDriverController.povLeft().onTrue(new ScoreMid());
     m_xboxCoDriverController.povRight().onTrue(new ScoreMid());
     m_xboxCoDriverController.povDown().onTrue(new ScoreLow());
+
+    m_xboxCoDriverController.a().onTrue(RobotContainer.m_driveSubsystem.setCoastMode());
+    m_xboxCoDriverController.b().onTrue(RobotContainer.m_driveSubsystem.setBrakeMode());
 
     }
 

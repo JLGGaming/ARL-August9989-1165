@@ -31,6 +31,7 @@ public class DriveArcade extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    System.out.println("End Driving Arcade");
     RobotContainer.m_driveSubsystem.DriveArcade(0, 0);
   }
 

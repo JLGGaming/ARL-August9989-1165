@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotorConstants;
@@ -24,7 +25,14 @@ public class DrivebaseSubsystem extends SubsystemBase {
 
   public DrivebaseSubsystem() {
     configMotors();
+    initDashboard();
     setCoastMode();
+  }
+
+  private void initDashboard() {
+    SmartDashboard.putNumber("Left Speed", 0);
+    SmartDashboard.putNumber("Right Speed", 0);
+    
   }
 
   public void configMotors() {
@@ -55,11 +63,15 @@ public class DrivebaseSubsystem extends SubsystemBase {
 
     backRight.follow(frontRight);
     backLeft.follow(frontLeft);
+    
   }
 
   public void DriveTank(double leftSpeed, double rightSpeed){
     frontLeft.set(leftSpeed);
     frontRight.set(rightSpeed);
+
+    SmartDashboard.putNumber("Left Speed", leftSpeed);
+    SmartDashboard.putNumber("Right Speed", rightSpeed);
   }
 
   public void DriveArcade(double xRotation, double ySpeed) {
@@ -67,6 +79,9 @@ public class DrivebaseSubsystem extends SubsystemBase {
     double rightSpeed = ySpeed*(0.8) - xRotation*(0.7);
     frontLeft.set(leftSpeed);
     frontRight.set(rightSpeed);
+
+    SmartDashboard.putNumber("Left Speed", leftSpeed);
+    SmartDashboard.putNumber("Right Speed", rightSpeed);
   }
 
   public CommandBase setBrakeMode() {
@@ -89,6 +104,6 @@ public class DrivebaseSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    SmartDashboard.putBoolean("Drivetrain Brake Mode", (frontRight.getIdleMode().equals(IdleMode.kCoast)));
   }
 }
