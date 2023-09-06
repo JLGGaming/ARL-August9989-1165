@@ -19,12 +19,11 @@ public class MoveMid extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_armSubsystem);
     armController = new PIDController(ArmPIDConstants.kP, ArmPIDConstants.kI, ArmPIDConstants.kD);
-    armController.setSetpoint(ArmPIDConstants.kSetpointHigh);
-    armController.setTolerance(10);
+    armController.setTolerance(0);
     armController.setSetpoint(ArmPIDConstants.kSetpointMid);
   }
 
-  // Called when the command is initially scheduled.
+  // Called when the command is initiall  y scheduled.
   @Override
   public void initialize() {
     armController.reset();

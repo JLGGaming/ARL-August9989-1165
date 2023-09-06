@@ -41,10 +41,8 @@ public class DrivebaseSubsystem extends SubsystemBase {
     frontRight.restoreFactoryDefaults();
     backRight.restoreFactoryDefaults();
 
-    frontLeft.setInverted(false);
-    backLeft.setInverted(false);
-    frontRight.setInverted(true);
-    backRight.setInverted(true);
+    frontLeft.setInverted(true);
+    frontRight.setInverted(false);
 
     frontLeft.setOpenLoopRampRate(MotorConstants.kDriveRampRate);
     backLeft.setOpenLoopRampRate(MotorConstants.kDriveRampRate);
@@ -56,13 +54,13 @@ public class DrivebaseSubsystem extends SubsystemBase {
     backRight.setSmartCurrentLimit(MotorConstants.kDriveSmartCurrent);
     backRight.setSmartCurrentLimit(MotorConstants.kDriveSmartCurrent);
 
-    // frontRight.burnFlash();
+    // frontRight.burnFlash();  
     // frontLeft.burnFlash();
     // backRight.burnFlash();
     // backRight.burnFlash();
 
-    backRight.follow(frontRight);
-    backLeft.follow(frontLeft);
+    backLeft.follow(frontLeft, false);
+    backRight.follow(frontRight, false);
     
   }
 
@@ -74,10 +72,10 @@ public class DrivebaseSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Right Speed", rightSpeed);
   }
 
-  public void DriveArcade(double xRotation, double ySpeed) {
+  public void DriveArcade(double ySpeed, double xRotation) {
     double leftSpeed = ySpeed*(0.8) + xRotation*(0.7);
     double rightSpeed = ySpeed*(0.8) - xRotation*(0.7);
-    frontLeft.set(leftSpeed);
+    frontLeft.set(leftSpeed*0.9);
     frontRight.set(rightSpeed);
 
     SmartDashboard.putNumber("Left Speed", leftSpeed);

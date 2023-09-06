@@ -17,6 +17,6 @@ public class ScoreMid extends SequentialCommandGroup {
   public ScoreMid() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new MoveMid().withTimeout(1), new Outtake(IntakeConstants.kMidSpeed).withTimeout(0.75));
+    addCommands(new MoveMid().withTimeout(1), new Outtake(IntakeConstants.kMidSpeed).withTimeout(0.5));
   }
 }

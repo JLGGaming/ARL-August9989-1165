@@ -42,19 +42,19 @@ public final class Constants {
   public static class ArmPIDConstants {
     public static final int kZeroPosition = 0;
 
-    public static final int kSetpointGround = 0;
-    public static final int kSetpointLow = 0;
-    public static final int kSetpointMid = 0;
-    public static final int kSetpointHigh = 0;
+    public static final int kSetpointGround = -1;
+    public static final int kSetpointLow = -23;
+    public static final int kSetpointMid = -21;
+    public static final int kSetpointHigh = -21;
 
-    public static final double kP = 0;
+    public static final double kP = 0.034;
     public static final double kI = 0;
     public static final double kD = 0;
 
     public static final double kTolerance = 0;
 
-    public static final double kSpeedMax = 0.8;
-    public static final double kSpeedMin = -0.8;
+    public static final double kSpeedMax = 0.2;
+    public static final double kSpeedMin = -0.2;
 
     public static final double kVelocityMax = 0;
     public static final double kVelocityMin = 0;
@@ -65,7 +65,7 @@ public final class Constants {
     public static final double kMidSpeed = 0.2;
     public static final double kLowSpeed = 0.1;
 
-    public static final double kIntakeSpeed = 0.2;
+    public static final double kIntakeSpeed = 0.25;
   }
 
 }

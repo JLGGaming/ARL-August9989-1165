@@ -19,8 +19,8 @@ public class MoveGround extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_armSubsystem);
     armController = new PIDController(ArmPIDConstants.kP, ArmPIDConstants.kI, ArmPIDConstants.kD);
-    armController.setSetpoint(ArmPIDConstants.kSetpointHigh);
-    armController.setTolerance(10);
+    armController.setSetpoint(ArmPIDConstants.kSetpointGround);
+    armController.setTolerance(0);
   }
 
   // Called when the command is initially scheduled.

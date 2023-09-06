@@ -9,13 +9,18 @@ import frc.robot.commands.LoadIn;
 import frc.robot.commands.ScoreHigh;
 import frc.robot.commands.ScoreLow;
 import frc.robot.commands.ScoreMid;
+import frc.robot.commands.arm.MoveGround;
+import frc.robot.commands.arm.MoveHigh;
+import frc.robot.commands.arm.MoveLow;
 import frc.robot.commands.arm.MoveMid;
 import frc.robot.commands.arm.MoveOverride;
+import frc.robot.commands.arm.NudgeArm;
 import frc.robot.commands.drivebase.DriveArcade;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DrivebaseSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -45,10 +50,11 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     m_driveSubsystem.setDefaultCommand(new DriveArcade());
-    m_armSubsystem.setDefaultCommand(new MoveOverride());
+    m_armSubsystem.setDefaultCommand(new MoveMid());
 
   }
  
+
   private void configureBindings() {
     m_xboxCoDriverController.rightTrigger(0.2).whileTrue(new LoadIn());
 
@@ -69,6 +75,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return new ScoreHigh();
+    return new NudgeArm().withTimeout(2).andThen(new WaitCommand(5)).andThen(RobotContainer.m_armSubsystem.resetArmPosition());
   }
 }

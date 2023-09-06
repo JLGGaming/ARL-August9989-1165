@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotorConstants;
 
@@ -42,15 +43,15 @@ public class ArmSubsystem extends SubsystemBase {
     followArmMotor.setIdleMode(IdleMode.kBrake);
 
     mainArmMotor.setInverted(false);
-    followArmMotor.setInverted(true);
 
     mainArmMotor.setSmartCurrentLimit(MotorConstants.kArmSmartCurrent);
     followArmMotor.setSmartCurrentLimit(MotorConstants.kArmSmartCurrent);
 
+    followArmMotor.follow(mainArmMotor, true);
+
     // mainArmMotor.burnFlash();
     // followArmMotor.burnFlash();
 
-    followArmMotor.follow(mainArmMotor);
     resetArmPosition();
   }
 
@@ -59,9 +60,11 @@ public class ArmSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Arm Output", speed);
   }
 
-  public void resetArmPosition() {
+  public CommandBase resetArmPosition() {
+    return runOnce( () -> {
     System.out.println("Arm Zeroed");
     armEncoder.setPosition(0);
+    });
   }
 
   public double getArmPosition() {

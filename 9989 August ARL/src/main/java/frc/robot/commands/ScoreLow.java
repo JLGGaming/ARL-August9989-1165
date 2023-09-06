@@ -17,6 +17,6 @@ public class ScoreLow extends SequentialCommandGroup {
   public ScoreLow() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new MoveLow().withTimeout(5), new Outtake(IntakeConstants.kLowSpeed).withTimeout(1));
+    addCommands(new MoveLow().withTimeout(1), new Outtake(IntakeConstants.kLowSpeed).withTimeout(1));
   }
 }

@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.commands.arm.MoveHigh;
+import frc.robot.commands.intake.Intake;
 import frc.robot.commands.intake.Outtake;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -17,6 +18,6 @@ public class ScoreHigh extends SequentialCommandGroup {
   public ScoreHigh() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new MoveHigh().withTimeout(5), new Outtake(IntakeConstants.kHighSpeed).withTimeout(0.75));
+    addCommands(new MoveHigh().withTimeout(1).raceWith(new Intake(0.1)), new Outtake(IntakeConstants.kHighSpeed).withTimeout(0.25));
   }
 }
